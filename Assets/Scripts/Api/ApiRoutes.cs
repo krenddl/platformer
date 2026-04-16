@@ -2,7 +2,7 @@ using UnityEngine;
 
 public static class ApiRoutes
 {
-    public const string BaseUrl = "https://localhost:7291/api";
+    public const string BaseUrl = "http://localhost:5254/api";
 
     public const string Register = BaseUrl + "/User/registrationUser";
     public const string Login = BaseUrl + "/User/authUser";

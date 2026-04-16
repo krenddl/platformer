@@ -9422,6 +9422,7 @@ GameObject:
   - component: {fileID: 1105382667}
   - component: {fileID: 1105382666}
   - component: {fileID: 1105382668}
+  - component: {fileID: 1105382669}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -9441,8 +9442,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3c147f23b0ad4d249a3beac98bac41bc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameManager
-  coins: 0
+  coins: 30
   stars: 0
+  levelNumber: 3
   starsToWin: 3
 --- !u!4 &1105382667
 Transform:
@@ -9472,6 +9474,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PauseMenu
   pausePanel: {fileID: 1441361697}
+--- !u!114 &1105382669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1105382665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9d80ce10568fbc648a151aeaafae056b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CoinUIManager
+  coinsText: {fileID: 309115001}
 --- !u!1 &1232014174
 GameObject:
   m_ObjectHideFlags: 0

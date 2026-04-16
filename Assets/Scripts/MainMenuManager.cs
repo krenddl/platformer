@@ -3,6 +3,17 @@ using UnityEngine.SceneManagement;
 
 public class MainMenuManager : MonoBehaviour
 {
+    [Header("Scene Names")]
+    [SerializeField] private string authSceneName = "AuthScene";
+    [SerializeField] private string levelSelectSceneName = "LevelSelect";
+    [SerializeField] private string leaderboardSceneName = "LeaderboardScene";
+    [SerializeField] private string settingsSceneName = "SettingsScene";
+
+    private void Start()
+    {
+        PlayerSession.LoadSession();
+    }
+
     public void PlayGame()
     {
         if (AudioManager.instance != null)
@@ -16,7 +27,29 @@ public class MainMenuManager : MonoBehaviour
         if (AudioManager.instance != null)
             AudioManager.instance.PlayButton();
 
-        SceneManager.LoadScene("LevelSelect");
+        SceneManager.LoadScene(levelSelectSceneName);
+    }
+
+    public void OpenLeaderboard()
+    {
+        if (AudioManager.instance != null)
+            AudioManager.instance.PlayButton();
+
+        SceneManager.LoadScene(leaderboardSceneName);
+    }
+
+    public void OpenSettings()
+    {
+        if (AudioManager.instance != null)
+            AudioManager.instance.PlayButton();
+
+        SceneManager.LoadScene(settingsSceneName);
+    }
+
+    public void Logout()
+    {
+        PlayerSession.Clear();
+        SceneManager.LoadScene(authSceneName);
     }
 
     public void ExitGame()
@@ -25,11 +58,5 @@ public class MainMenuManager : MonoBehaviour
             AudioManager.instance.PlayButton();
 
         Application.Quit();
-    }
-
-    public void ToggleMusic()
-    {
-        if (AudioManager.instance != null)
-            AudioManager.instance.ToggleMusic();
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 
 [Serializable]
 public class RegisterRequest
@@ -26,25 +27,6 @@ public class AuthResponse
 }
 
 [Serializable]
-public class UserDto
-{
-    public int id_User;
-    public string login;
-    public string name;
-    public int coins;
-}
-
-[Serializable]
-public class ProgressItem
-{
-    public int id;
-    public int userId;
-    public int levelNumber;
-    public int stars;
-    public bool isCompleted;
-}
-
-[Serializable]
 public class CompleteLevelRequest
 {
     public int userId;
@@ -58,6 +40,16 @@ public class CompleteLevelResponse
 {
     public string message;
     public int coins;
+}
+
+[Serializable]
+public class ProgressItem
+{
+    public int id;
+    public int userId;
+    public int levelNumber;
+    public int stars;
+    public bool isCompleted;
 }
 
 [Serializable]

@@ -8,6 +8,7 @@ public class GameManager : MonoBehaviour
 
     public int coins = 0;
     public int stars = 0;
+    public int levelNumber = 1;
     public int starsToWin = 3;
 
     private bool levelCompleted = false;
@@ -54,7 +55,17 @@ public class GameManager : MonoBehaviour
     {
         levelCompleted = true;
 
+
         yield return new WaitForSeconds(1f);
+
+        if (ProgressManager.Instance != null)
+        {
+            int currentLevelNumber = levelNumber;
+            int earnedCoins = coins;
+            int earnedStars = stars;
+
+            ProgressManager.Instance.CompleteLevel(currentLevelNumber, earnedCoins, earnedStars);
+        }
 
         SceneManager.LoadScene("WinScene");
     }

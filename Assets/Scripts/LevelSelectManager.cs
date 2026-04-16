@@ -4,49 +4,48 @@ using UnityEngine.UI;
 
 public class LevelSelectManager : MonoBehaviour
 {
-    public Button level2Button;
-    public Button level3Button;
+    [SerializeField] private Button level2Button;
+    [SerializeField] private Button level3Button;
+    [SerializeField] private string mainMenuSceneName = "MainMenu";
 
-    void Start()
+    private void Start()
     {
-        int unlockedLevel = PlayerPrefs.GetInt("UnlockedLevel", 1);
+        UpdateButtons();
 
-        if (level2Button != null)
-            level2Button.interactable = unlockedLevel >= 2;
-
-        if (level3Button != null)
-            level3Button.interactable = unlockedLevel >= 3;
+        if (ProgressManager.Instance != null)
+        {
+            ProgressManager.Instance.LoadProgress();
+        }
     }
 
     public void LoadLevel1()
     {
-        if (AudioManager.instance != null)
-            AudioManager.instance.PlayButton();
-
         SceneManager.LoadScene("Level1");
     }
 
     public void LoadLevel2()
     {
-        if (AudioManager.instance != null)
-            AudioManager.instance.PlayButton();
-
-        SceneManager.LoadScene("Level2");
+        if (PlayerSession.Level2Unlocked)
+            SceneManager.LoadScene("Level2");
     }
 
     public void LoadLevel3()
     {
-        if (AudioManager.instance != null)
-            AudioManager.instance.PlayButton();
-
-        SceneManager.LoadScene("Level3");
+        if (PlayerSession.Level3Unlocked)
+            SceneManager.LoadScene("Level3");
     }
 
     public void BackToMenu()
     {
-        if (AudioManager.instance != null)
-            AudioManager.instance.PlayButton();
+        SceneManager.LoadScene(mainMenuSceneName);
+    }
 
-        SceneManager.LoadScene("MainMenu");
+    public void UpdateButtons()
+    {
+        if (level2Button != null)
+            level2Button.interactable = PlayerSession.Level2Unlocked;
+
+        if (level3Button != null)
+            level3Button.interactable = PlayerSession.Level3Unlocked;
     }
 }

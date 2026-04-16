@@ -39,6 +39,13 @@ public static class PlayerSession
         Token = PlayerPrefs.GetString("auth_token", "");
     }
 
+    public static void UpdateCoins(int coins)
+    {
+        Coins = coins;
+        PlayerPrefs.SetInt("user_coins", coins);
+        PlayerPrefs.Save();
+    }
+
     public static void Clear()
     {
         UserId = 0;
